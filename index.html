@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>MongoDB</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,8 +16,209 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<img src="./dist/assets/mongodb.png" alt="mongoDB" width="400" height="108">
+				</section>
+				<section>
+					<p>NoSQL = Not only SQL</p>
+				</section>
+				<section>
+					<img src="./dist/assets/compare.webp" alt="mongoDB compare">
+				</section>
+				<section data-markdown>
+					### Advantages of MongoDB
+						+ High availability
+						+ Simplicity
+						+ Easy environment and quick setup
+						+ Flexibility
+						+ Sharding
+						+ Scalability
+						+ Documentation
+						+ Technical Support
+				</section>
+				<section data-markdown>
+					# CRUD
+				</section>
+				<section data-markdown>
+					#### MongoDB Queries
+					+ show databases
+						+ displays the file size of databases
+					+ db
+						+ display the current database you are using
+					+ use (your_db_name)
+						+ switch or create a new db
+					+ db.dropDatabase()
+					+ createCollection()
+					```
+					db.createCollection(“testCollection”)
+					db.createCollection(“test”, {capped: true, size: 5, max: 5})
+					```
+				</section>
+				<section data-markdown>
+					#### Insert Collection
+					insertOne()
+					```
+					db.testCollection.insertOne(
+						{
+						 "name": "bhim", 
+						 "age": 22,
+						 "email": "tewst@gmail.com"
+						}
+)
+					```
+				</section>
+				<section data-markdown>
+					insertMany()
+					```
+					db.testCollection.insertMany([
+					{
+					  "name": "navindu", 
+					  "age": 22,
+					  "email": "nav@gmail.com"
+					},      {
+					  "name": "kovid", 
+					  "age": 27,
+					  "email": "kovig@gmail.com"
+					},
+					{
+					  "name": "john doe", 
+					  "age": 25,
+					  "city": "Hyderabad"
+					}
+])
+					```
+				</section>
+				<section data-markdown>
+					insert()
+					```
+					db.testCollection.insert({“name”: “John”, “age” : 24, “email”: “john@gmail.com”})
+					```
+				</section>
+				<section data-markdown>
+					#### Search Collection
+					Queries all data in the document:
+					```
+					db.testCollection.find()
+					```
+					Show in more readable JSON format:
+					```
+					db.testCollection.find().pretty()
+					```
+					To search a document by its field:
+					```
+					db.testCollection.find(
+						{
+						name: “John DOE”
+						}
+					)
+					```
+				</section>
+				<section data-markdown>
+					#### Comparison of the fields
+					+ $gt
+					+ $gte
+					+ $lt
+					+ $lte
+					+ $eq
+					```
+					db.testCollection.find( { age: { $eq: 20 } } )
+					```
+					+ $ne
+					+ $in
+					```
+					db.inventory.find( { age: { $in: [ 5, 15 ] } })
+					```
+					+ $nin
+				</section>
+				<section data-markdown>
+					limit()
+					```
+					db.testCollection.find().limit(2)
+					```
+					sort()
+					```
+					db.testCollection.find().sort({name: 1})
+					```
+				</section>
+				<section data-markdown>
+					#### Update Collection
+					```
+					db.testCollection.update({age : 22}, {$set: {age: 24}})
+					```
+					```
+					db.testCollection.update({name: "navindu"}, {$unset: {age:""}});
+					```
+				</section>
+				<section data-markdown>
+					#### Delete Collection
+					```
+					db.testCollection.remove({_id:ObjectId("5e88b02db3fbf26334ef610e")});
+					```
+					```
+					db.testCollection.remove({});
+					```
+					```
+					db.testCollection.drop()
+					```
+
+				</section>
+				<section data-markdown>
+					Logical operators
+					+ $and
+					+ $not
+					+ $nor
+					+ $or
+				</section>
+				<section data-markdown>
+					Returns statistics about a single database's use state:
+					```
+					db.stats()
+					```
+				</section>
+				<section>
+					<p>Should we forget about SQL? Always use MongoDB?</p>
+				</section>
+				<section>
+					<h4>Use Cases</h4>
+					<img src="./dist/assets/applications.png" alt="applications">
+				</section>
+				<section data-markdown>
+					#### Not Great For
+					Transaction Critical Data
+					+ Purchases
+					+ Banking
+					+ Inventory Control
+				</section>
+				<section>
+					<h1>Use Both!</h1>
+				</section>
+				<section data-markdown>
+					Products in MongoDB
+					```
+					{
+						"_id" : ObjectId("52833435add826d9da839268"),
+						"baseprice" : 4.99,
+						"category" : "toys",
+						"colors" : [ "tiger orange", " canary yellow" ],
+						"name" : "Hacky Sack Maxx",
+						"promotions" : [ { "coupon" : "ZY678", "saleprice" : 4.49, "expires" 13-12-12T00:00:00Z") },
+										{ "coupon" : "CD8888", "promo" : "free shipping", "expires" 
+								]
+					}
+					```
+				</section>
+				<section>
+					<p>Orders in SQL</p>
+					<img src="./dist/assets/sql-example.png" alt="SQL example">
+				</section>
+				<section>
+					<p>Thank you for your attention!</p>
+					<p style="font-size: large">
+						Contacts:<br>
+						E-mail: <a href="mailto:dmitriev289@gmail.com">dmitriev289@gmail.com</a><br>
+						Github: <a href="https://github.com/eOne1999">eOne1999</a>
+					</p>
+				</section>
 			</div>
 		</div>
 
